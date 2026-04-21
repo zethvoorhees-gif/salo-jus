@@ -3,500 +3,504 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Salo Jus — Small Business Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Salo Jus — Fresh Juice Small Business Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --orange: #F4622A;
-      --yellow: #FFCD3C;
-      --green: #2DBF6F;
-      --cream: #FFF8EE;
-      --brown: #3B1F0E;
-      --light: #FFF3E0;
+      --orange: #E8521A;
+      --orange-light: #FF7A3D;
+      --yellow: #F5C842;
+      --green: #27A85F;
+      --green-light: #4DCB7E;
+      --cream: #FEFAF3;
+      --cream2: #FFF4E0;
+      --brown: #2C150A;
+      --brown2: #5C3317;
+      --muted: #8A5C35;
+      --white: #FFFFFF;
+      --card-shadow: 0 8px 32px rgba(44,21,10,.08);
     }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--brown); font-family: 'Outfit', sans-serif; overflow-x: hidden; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .top-strip { height: 5px; background: linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--orange)); background-size: 200%; animation: shimmer 4s linear infinite; }
+    @keyframes shimmer { to { background-position: 200% center; } }
 
-    body {
-      background: var(--cream);
-      color: var(--brown);
-      font-family: 'DM Sans', sans-serif;
-      overflow-x: hidden;
-    }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(254,250,243,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232,82,26,.1); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo-icon { width: 36px; height: 36px; background: var(--orange); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--brown); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: .85rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: .03em; transition: color .2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { background: var(--orange); color: white; border: none; border-radius: 99px; padding: 9px 22px; font-size: .83rem; font-weight: 600; cursor: pointer; letter-spacing: .04em; transition: all .2s; text-decoration: none; display: inline-block; }
+    .nav-cta:hover { background: var(--orange-light); transform: scale(1.03); }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      overflow: hidden;
-    }
+    .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 24px 60px; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 50% 35%, #FFE4C2 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 20% 80%, rgba(232,82,26,.08) 0%, transparent 60%), var(--cream); }
+    .blob { position: absolute; border-radius: 50%; pointer-events: none; animation: floatBlob 7s ease-in-out infinite; }
+    .blob-a { width:380px;height:380px; background:var(--orange); opacity:.07; top:-120px;left:-120px; }
+    .blob-b { width:240px;height:240px; background:var(--yellow); opacity:.12; bottom:-60px;right:-60px; animation-delay:2.5s; }
+    .blob-c { width:160px;height:160px; background:var(--green); opacity:.1; top:25%;right:8%; animation-delay:5s; }
+    @keyframes floatBlob { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-22px) rotate(8deg); } }
 
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, #FFE0B2 0%, var(--cream) 70%);
-      z-index: 0;
-    }
+    .hero-eyebrow { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; background: rgba(245,200,66,.2); border: 1px solid rgba(245,200,66,.5); color: var(--brown2); font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; margin-bottom: 24px; animation: fadeUp .6s .1s both; }
+    .hero-icon { position: relative; z-index: 1; width: 120px; height: 120px; background: var(--orange); border-radius: 32px; display: flex; align-items: center; justify-content: center; font-size: 56px; margin-bottom: 30px; box-shadow: 0 16px 48px rgba(232,82,26,.35); animation: popIn .8s cubic-bezier(.34,1.56,.64,1) both; }
+    @keyframes popIn { from { opacity:0; transform: scale(.4) rotate(-15deg); } to { opacity:1; transform: scale(1) rotate(0); } }
+    .hero h1 { position: relative; z-index: 1; font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 9vw, 6.5rem); line-height: 1; color: var(--brown); animation: fadeUp .7s .2s both; }
+    .hero h1 em { font-style: italic; color: var(--orange); }
+    .hero-sub { position: relative; z-index: 1; margin-top: 18px; font-size: 1.1rem; font-weight: 300; color: var(--muted); max-width: 480px; line-height: 1.65; animation: fadeUp .7s .35s both; }
+    .hero-actions { position: relative; z-index: 1; margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; animation: fadeUp .7s .5s both; }
+    .btn-primary { background: var(--orange); color: white; border: none; padding: 14px 32px; border-radius: 99px; font-size: .9rem; font-weight: 600; cursor: pointer; box-shadow: 0 8px 24px rgba(232,82,26,.3); transition: all .25s; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--brown); border: 1.5px solid rgba(44,21,10,.2); padding: 14px 32px; border-radius: 99px; font-size: .9rem; font-weight: 500; cursor: pointer; transition: all .25s; text-decoration: none; display: inline-block; }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+    .hero-badges { position: relative; z-index: 1; margin-top: 52px; display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; animation: fadeUp .7s .65s both; }
+    .hero-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 700; color: var(--orange); }
+    .hero-badge-lbl { font-size: .76rem; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; margin-top: 2px; }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: translateY(0); } }
 
-    /* floating circles */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.18;
-      animation: float 6s ease-in-out infinite;
-    }
-    .blob-1 { width:320px; height:320px; background:var(--orange); top:-80px; left:-80px; animation-delay:0s; }
-    .blob-2 { width:200px; height:200px; background:var(--yellow); bottom:-40px; right:-40px; animation-delay:2s; }
-    .blob-3 { width:140px; height:140px; background:var(--green); top:30%; right:5%; animation-delay:4s; }
+    .section { padding: 80px 24px; max-width: 960px; margin: 0 auto; }
+    .section-label { font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.15; color: var(--brown); margin-bottom: 18px; }
+    .section-body { font-size: .97rem; line-height: 1.85; color: var(--brown2); }
 
-    @keyframes float {
-      0%,100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-18px) scale(1.04); }
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
+    @media(max-width:680px){ .about-grid, .mv-inner, .contact-layout { grid-template-columns:1fr!important; gap:32px!important; } .nav-links{display:none;} }
+    .about-visual { background: linear-gradient(135deg, var(--orange), #FF9A5C); border-radius: 28px; padding: 48px 32px; text-align: center; box-shadow: 0 20px 60px rgba(232,82,26,.2); }
+    .about-visual-icon { font-size: 5rem; display: block; margin-bottom: 16px; }
+    .about-visual-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: white; line-height: 1.6; }
+    .about-text p + p { margin-top: 16px; }
+    .about-founded { margin-top: 28px; display: flex; align-items: center; gap: 14px; background: var(--cream2); border-radius: 16px; padding: 16px 20px; }
+    .about-founded-icon { font-size: 1.8rem; }
+    .about-founded-text strong { display: block; font-size: .9rem; color: var(--brown); }
+    .about-founded-text span { font-size: .82rem; color: var(--muted); }
 
-    .hero-logo {
-      position: relative; z-index: 1;
-      width: 110px; height: 110px;
-      background: var(--orange);
-      border-radius: 28px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 52px;
-      box-shadow: 0 12px 40px rgba(244,98,42,.35);
-      margin-bottom: 28px;
-      animation: popIn .8s cubic-bezier(.34,1.56,.64,1) both;
-    }
+    .mv-strip { background: var(--brown); padding: 64px 24px; }
+    .mv-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .mv-card .lbl { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; opacity: .5; margin-bottom: 12px; color: white; }
+    .mv-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 14px; color: var(--yellow); }
+    .mv-card p { font-size: .92rem; line-height: 1.8; opacity: .8; color: white; }
 
-    @keyframes popIn {
-      from { opacity:0; transform: scale(.5) rotate(-10deg); }
-      to   { opacity:1; transform: scale(1) rotate(0); }
-    }
+    .stats-band { background: var(--orange); padding: 48px 24px; }
+    .stats-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 36px; text-align: center; }
+    .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: white; line-height: 1; }
+    .stat .lbl { font-size: .75rem; color: rgba(255,255,255,.8); letter-spacing: .08em; text-transform: uppercase; margin-top: 6px; }
 
-    .hero h1 {
-      position: relative; z-index: 1;
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      line-height: 1.05;
-      color: var(--brown);
-      animation: slideUp .7s .2s ease both;
-    }
+    .menu-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; margin-top: 32px; }
+    .tab-btn { padding: 8px 20px; border-radius: 99px; border: 1.5px solid rgba(44,21,10,.15); background: transparent; color: var(--muted); font-size: .83rem; font-weight: 500; cursor: pointer; transition: all .2s; font-family: 'Outfit', sans-serif; }
+    .tab-btn.active, .tab-btn:hover { background: var(--orange); border-color: var(--orange); color: white; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 20px; }
+    .menu-card { background: white; border-radius: 20px; padding: 28px 20px 24px; text-align: center; box-shadow: var(--card-shadow); transition: transform .3s, box-shadow .3s; position: relative; overflow: hidden; }
+    .menu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), var(--yellow)); opacity: 0; transition: opacity .3s; }
+    .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(232,82,26,.12); }
+    .menu-card:hover::before { opacity: 1; }
+    .menu-card .icon { font-size: 3rem; margin-bottom: 14px; display: block; }
+    .menu-card .name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--brown); margin-bottom: 6px; }
+    .menu-card .desc { font-size: .78rem; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+    .menu-card .price { font-size: .9rem; font-weight: 600; color: var(--orange); }
+    .badge-new { position: absolute; top: 12px; right: 12px; background: var(--green); color: white; font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; }
+    .badge-best { position: absolute; top: 12px; right: 12px; background: var(--yellow); color: var(--brown); font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--orange);
-    }
+    .strengths-bg { background: var(--cream2); padding: 80px 24px; }
+    .strengths-inner { max-width: 960px; margin: 0 auto; }
+    .strengths-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 24px; margin-top: 40px; }
+    .strength-card { background: white; border-radius: 20px; padding: 32px 28px; box-shadow: var(--card-shadow); transition: transform .3s; }
+    .strength-card:hover { transform: translateY(-4px); }
+    .strength-icon { width: 52px; height: 52px; background: var(--cream2); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 18px; }
+    .strength-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--brown); margin-bottom: 8px; }
+    .strength-card p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
 
-    .hero-tagline {
-      position: relative; z-index: 1;
-      margin-top: 16px;
-      font-size: 1.1rem;
-      font-weight: 300;
-      letter-spacing: .04em;
-      color: #7a4e2d;
-      animation: slideUp .7s .4s ease both;
-    }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 0; margin-top: 48px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 35px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--orange), var(--yellow), var(--green)); z-index: 0; }
+    @media(max-width:600px){ .process-steps::before { display:none; } .process-steps { gap: 24px; } }
+    .process-step { text-align: center; padding: 0 8px; position: relative; z-index: 1; }
+    .step-circle { width: 70px; height: 70px; border-radius: 50%; background: white; border: 3px solid var(--orange); display: flex; align-items: center; justify-content: center; font-size: 1.7rem; margin: 0 auto 18px; box-shadow: 0 4px 20px rgba(232,82,26,.15); position: relative; }
+    .step-num { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: var(--orange); color: white; font-size: .62rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .process-step h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--brown); margin-bottom: 6px; }
+    .process-step p { font-size: .76rem; color: var(--muted); line-height: 1.6; }
 
-    .hero-badge {
-      position: relative; z-index: 1;
-      margin-top: 32px;
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--yellow);
-      color: var(--brown);
-      font-weight: 500;
-      font-size: .85rem;
-      padding: 8px 20px;
-      border-radius: 99px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      animation: slideUp .7s .6s ease both;
-      box-shadow: 0 4px 16px rgba(255,205,60,.4);
-    }
+    .testi-bg { background: var(--brown); padding: 80px 24px; }
+    .testi-inner { max-width: 960px; margin: 0 auto; }
+    .testi-inner .section-title { color: white; }
+    .testi-inner .section-label { color: var(--yellow); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px,1fr)); gap: 24px; margin-top: 40px; }
+    .testi-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 28px; }
+    .testi-stars { color: var(--yellow); font-size: 1rem; margin-bottom: 14px; }
+    .testi-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: rgba(255,255,255,.85); line-height: 1.7; margin-bottom: 20px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .testi-name { font-size: .88rem; font-weight: 600; color: white; }
+    .testi-loc { font-size: .75rem; color: rgba(255,255,255,.4); }
 
-    @keyframes slideUp {
-      from { opacity:0; transform: translateY(24px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
+    .promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 24px; margin-top: 40px; }
+    .promo-card { border-radius: 22px; padding: 32px 28px; position: relative; overflow: hidden; }
+    .promo-card.green { background: linear-gradient(135deg, var(--green), var(--green-light)); }
+    .promo-card.orange { background: linear-gradient(135deg, var(--orange), var(--orange-light)); }
+    .promo-card.yellow { background: linear-gradient(135deg, #D4A200, var(--yellow)); }
+    .promo-card::after { content: ''; position: absolute; bottom: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,.1); }
+    .promo-card .promo-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+    .promo-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: white; margin-bottom: 8px; }
+    .promo-card p { font-size: .83rem; color: rgba(255,255,255,.9); line-height: 1.6; }
 
-    /* ── DIVIDER ── */
-    .wave {
-      width: 100%;
-      line-height: 0;
-      margin-top: -2px;
-    }
-    .wave svg { display: block; width: 100%; }
+    .gallery-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 160px 160px; gap: 12px; margin-top: 40px; border-radius: 24px; overflow: hidden; }
+    .gallery-cell { display: flex; align-items: center; justify-content: center; font-size: 3rem; border-radius: 16px; }
+    .gc-1 { background: linear-gradient(135deg,#FFD4B2,#FFAA6A); grid-column: 1; grid-row: 1/3; }
+    .gc-2 { background: linear-gradient(135deg,#C8F5DC,#7DDAAA); }
+    .gc-3 { background: linear-gradient(135deg,#FFF3CC,#FFD966); }
+    .gc-4 { background: linear-gradient(135deg,#FFD4B2,#FFA07A); }
+    .gc-5 { background: linear-gradient(135deg,#C8E6FF,#80BFFF); }
 
-    /* ── SECTIONS ── */
-    section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
+    .contact-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; margin-top: 40px; align-items: start; }
+    .contact-info-box { background: var(--brown); border-radius: 24px; padding: 40px 36px; color: white; }
+    .contact-info-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--yellow); margin-bottom: 28px; }
+    .contact-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+    .contact-row-icon { width: 38px; height: 38px; background: rgba(255,255,255,.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-row-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; opacity: .45; margin-bottom: 3px; }
+    .contact-row-val { font-size: .93rem; color: white; }
+    .contact-row-val a { color: var(--yellow); text-decoration: none; }
+    .contact-map-box { background: white; border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); }
+    .map-placeholder { background: linear-gradient(135deg, var(--cream2), #FFE4C2); height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
+    .map-placeholder .map-icon { font-size: 3rem; }
+    .map-placeholder p { font-size: .85rem; color: var(--muted); }
+    .map-cta { padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; }
+    .map-cta a { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; padding: 12px 18px; border-radius: 12px; font-size: .85rem; font-weight: 500; transition: opacity .2s; background: var(--orange); }
+    .map-cta a:hover { opacity: .85; }
+    .map-cta a.wa { background: #25D366; }
 
-    .section-label {
-      font-size: .75rem;
-      font-weight: 500;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 10px;
-    }
+    .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: white; border-radius: 16px; box-shadow: var(--card-shadow); overflow: hidden; }
+    .faq-q { width: 100%; background: none; border: none; cursor: pointer; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; font-family: 'Outfit', sans-serif; font-size: .95rem; font-weight: 500; color: var(--brown); text-align: left; }
+    .faq-q .arrow { transition: transform .3s; font-size: .8rem; color: var(--orange); }
+    .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; font-size: .88rem; color: var(--muted); line-height: 1.75; padding: 0 24px; }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
 
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.2;
-      color: var(--brown);
-      margin-bottom: 20px;
-    }
+    .footer-main { background: var(--brown); padding: 60px 24px 32px; }
+    .footer-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    @media(max-width:680px){ .footer-inner { grid-template-columns:1fr; gap:28px; } }
+    .footer-brand .brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-brand .logo-box { width: 40px; height: 40px; background: var(--orange); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .footer-brand .logo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: white; }
+    .footer-brand p { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 300px; }
+    .footer-col h4 { font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; color: var(--yellow); margin-bottom: 16px; font-weight: 600; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: .85rem; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+    .footer-col ul li a:hover { color: white; }
+    .footer-bottom { max-width: 960px; margin: 32px auto 0; border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: .78rem; color: rgba(255,255,255,.3); }
 
-    .section-body {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #5a3a20;
-    }
-
-    /* ── STATS ── */
-    .stats-bar {
-      background: var(--orange);
-      color: white;
-      padding: 40px 24px;
-    }
-    .stats-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 32px;
-      text-align: center;
-    }
-    .stat-item .num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .stat-item .lbl {
-      font-size: .82rem;
-      opacity: .85;
-      margin-top: 6px;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    /* ── MENU GRID ── */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
-    }
-
-    .menu-card {
-      background: white;
-      border-radius: 20px;
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(59,31,14,.07);
-      transition: transform .3s, box-shadow .3s;
-      cursor: default;
-    }
-    .menu-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 36px rgba(244,98,42,.15);
-    }
-    .menu-card .icon { font-size: 2.8rem; margin-bottom: 12px; }
-    .menu-card .name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--brown);
-    }
-    .menu-card .price {
-      margin-top: 8px;
-      font-size: .88rem;
-      color: var(--orange);
-      font-weight: 500;
-    }
-    .menu-card .desc {
-      margin-top: 6px;
-      font-size: .8rem;
-      color: #8a6040;
-      line-height: 1.5;
-    }
-
-    /* ── KEUNGGULAN ── */
-    .keunggulan-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .keunggulan-item {
-      display: flex; gap: 16px; align-items: flex-start;
-    }
-    .keunggulan-icon {
-      width: 44px; height: 44px; flex-shrink: 0;
-      background: var(--light);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-    }
-    .keunggulan-item h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-    .keunggulan-item p { font-size: .85rem; color: #6a4020; line-height: 1.6; }
-
-    /* ── KONTAK ── */
-    .kontak-box {
-      background: var(--brown);
-      color: white;
-      border-radius: 28px;
-      padding: 48px 40px;
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px;
-    }
-    .kontak-item .label {
-      font-size: .72rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      opacity: .55;
-      margin-bottom: 6px;
-    }
-    .kontak-item .val {
-      font-size: .97rem;
-      font-weight: 400;
-      line-height: 1.5;
-    }
-    .kontak-item .val a { color: var(--yellow); text-decoration: none; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px 16px;
-      font-size: .82rem;
-      color: #b07040;
-    }
-
-    /* ── STRIP ACCENT ── */
-    .orange-strip {
-      height: 6px;
-      background: linear-gradient(90deg, var(--orange), var(--yellow), var(--green));
-    }
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; color: white; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 8px 28px rgba(37,211,102,.4); transition: transform .3s; animation: waPulse 2.5s ease-in-out infinite; }
+    .wa-float:hover { transform: scale(1.1); }
+    @keyframes waPulse { 0%,100% { box-shadow: 0 8px 28px rgba(37,211,102,.4); } 50% { box-shadow: 0 8px 40px rgba(37,211,102,.65); } }
+    .bottom-strip { height: 5px; background: linear-gradient(90deg, var(--green), var(--yellow), var(--orange)); }
   </style>
 </head>
 <body>
 
-<div class="orange-strip"></div>
+<div class="top-strip"></div>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🥤</div>
+    <span class="nav-logo-text">Salo Jus</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#strengths">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="https://wa.me/6282323240186">Order Now</a>
+</nav>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="home">
   <div class="hero-bg"></div>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-
-  <div class="hero-logo">🥤</div>
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
+  <div class="hero-eyebrow">🌿 100% Natural · Fresh to Order · Karawang</div>
+  <div class="hero-icon">🥤</div>
   <h1>Salo <em>Jus</em></h1>
-  <p class="hero-tagline">Natural Freshness from Handpicked Fruits</p>
-  <div class="hero-badge">⭐ Trusted Local Small Business</div>
+  <p class="hero-sub">Premium fresh fruit juices &amp; beverages crafted from handpicked ingredients — served cold, made with love in Karawang.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="https://wa.me/6282323240186">📲 Order via WhatsApp</a>
+    <a class="btn-secondary" href="#menu">View Our Menu</a>
+  </div>
+  <div class="hero-badges">
+    <div><div class="hero-badge-num">2018</div><div class="hero-badge-lbl">Est. Year</div></div>
+    <div><div class="hero-badge-num">20+</div><div class="hero-badge-lbl">Menu Varieties</div></div>
+    <div><div class="hero-badge-num">500+</div><div class="hero-badge-lbl">Happy Customers</div></div>
+    <div><div class="hero-badge-num">100%</div><div class="hero-badge-lbl">Natural</div></div>
+  </div>
 </div>
 
-<!-- WAVE -->
-<div class="wave">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FFF8EE"/>
-  </svg>
+<!-- ABOUT -->
+<div id="about">
+  <div class="section">
+    <p class="section-label">About Us</p>
+    <div class="about-grid">
+      <div class="about-visual">
+        <span class="about-visual-icon">🍹</span>
+        <p class="about-visual-quote">"Every glass we pour is a promise of freshness, health, and happiness."</p>
+      </div>
+      <div class="about-text">
+        <h2 class="section-title">A Local Taste You Can Trust</h2>
+        <p class="section-body"><strong>Salo Jus</strong> is a homegrown small business based in Karawang, West Java, specialising in fresh fruit juices, blended drinks, chilled fruit bowls, and healthy beverages made from premium natural ingredients.</p>
+        <p class="section-body">Since our founding in 2018, we have served the Karawang community with one simple mission: deliver genuine freshness at an honest price. Every single glass is made fresh to order — no preservatives, no artificial colours, and no shortcuts.</p>
+        <p class="section-body">We believe that a healthy drink should not be a luxury. That's why we keep our prices affordable without ever compromising on quality or taste.</p>
+        <div class="about-founded">
+          <span class="about-founded-icon">📅</span>
+          <div class="about-founded-text">
+            <strong>Founded in 2018</strong>
+            <span>Proudly serving Karawang, West Java</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- ABOUT US -->
-<section>
-  <p class="section-label">About Us</p>
-  <h2 class="section-title">Fresh Drinks, <br/>Authentic Flavour</h2>
-  <p class="section-body">
-    <strong>Salo Jus</strong> is a local small business specialising in fresh fruit juices,
-    mixed drinks, and chilled fruit bowls made from the finest quality ingredients.
-    Founded in 2018, we are committed to delivering healthy, affordable, and
-    flavourful beverages for every Indonesian family.
-  </p>
-  <p class="section-body" style="margin-top:14px;">
-    Every glass we serve is made fresh to order — no artificial colouring, no
-    preservatives, and no excessive synthetic sweeteners. Just real fruit and genuine freshness.
-  </p>
-</section>
+<!-- MISSION & VISION -->
+<div class="mv-strip">
+  <div class="mv-inner">
+    <div class="mv-card">
+      <p class="lbl">Our Mission</p>
+      <h3>🎯 Mission</h3>
+      <p>To provide affordable, healthy, and genuinely fresh fruit beverages to the Karawang community — made with care, served with warmth, and crafted without compromise on quality.</p>
+    </div>
+    <div class="mv-card">
+      <p class="lbl">Our Vision</p>
+      <h3>🌟 Vision</h3>
+      <p>To become the most trusted and beloved fresh juice brand in Karawang, and to inspire a healthier lifestyle one refreshing glass at a time across Indonesia.</p>
+    </div>
+  </div>
+</div>
 
 <!-- STATS -->
-<div class="stats-bar">
+<div class="stats-band">
   <div class="stats-inner">
-    <div class="stat-item">
-      <div class="num">2018</div>
-      <div class="lbl">Est. Year</div>
+    <div class="stat"><div class="num">6+</div><div class="lbl">Years Operating</div></div>
+    <div class="stat"><div class="num">20+</div><div class="lbl">Menu Varieties</div></div>
+    <div class="stat"><div class="num">500+</div><div class="lbl">Loyal Customers</div></div>
+    <div class="stat"><div class="num">100%</div><div class="lbl">Natural Ingredients</div></div>
+    <div class="stat"><div class="num">0</div><div class="lbl">Preservatives</div></div>
+  </div>
+</div>
+
+<!-- MENU -->
+<div id="menu">
+  <div class="section">
+    <p class="section-label">Our Menu</p>
+    <h2 class="section-title">Fresh Drinks for Every Mood</h2>
+    <p class="section-body">From classic single-fruit juices to creative blends and chilled bowls — there's always something perfect for you.</p>
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="filterMenu('all',this)">All</button>
+      <button class="tab-btn" onclick="filterMenu('juice',this)">Fruit Juices</button>
+      <button class="tab-btn" onclick="filterMenu('blend',this)">Blends &amp; Mix</button>
+      <button class="tab-btn" onclick="filterMenu('bowl',this)">Ice Bowls</button>
     </div>
-    <div class="stat-item">
-      <div class="num">20+</div>
-      <div class="lbl">Menu Varieties</div>
-    </div>
-    <div class="stat-item">
-      <div class="num">500+</div>
-      <div class="lbl">Loyal Customers</div>
-    </div>
-    <div class="stat-item">
-      <div class="num">100%</div>
-      <div class="lbl">Natural Ingredients</div>
+    <div class="menu-grid" id="menuGrid">
+      <div class="menu-card" data-cat="juice"><div class="badge-best">Best Seller</div><span class="icon">🥭</span><div class="name">Mango Juice</div><div class="desc">Sweet, smooth and fragrant from handpicked Harum Manis mangoes</div><div class="price">Rp 8,000</div></div>
+      <div class="menu-card" data-cat="juice"><span class="icon">🍉</span><div class="name">Watermelon Juice</div><div class="desc">Super hydrating and naturally sweet — perfect for hot days</div><div class="price">Rp 7,000</div></div>
+      <div class="menu-card" data-cat="juice"><span class="icon">🍊</span><div class="name">Orange Juice</div><div class="desc">Freshly squeezed local oranges packed with natural vitamin C</div><div class="price">Rp 8,000</div></div>
+      <div class="menu-card" data-cat="juice"><div class="badge-best">Best Seller</div><span class="icon">🥑</span><div class="name">Avocado Juice</div><div class="desc">Thick, rich, and creamy — loaded with healthy fats and nutrients</div><div class="price">Rp 10,000</div></div>
+      <div class="menu-card" data-cat="juice"><span class="icon">🍍</span><div class="name">Pineapple Juice</div><div class="desc">Tangy tropical freshness with natural bromelain enzymes</div><div class="price">Rp 7,000</div></div>
+      <div class="menu-card" data-cat="juice"><div class="badge-new">New</div><span class="icon">🍓</span><div class="name">Strawberry Juice</div><div class="desc">Rich in antioxidants with a premium sweet-sour flavour</div><div class="price">Rp 12,000</div></div>
+      <div class="menu-card" data-cat="juice"><span class="icon">🍇</span><div class="name">Grape Juice</div><div class="desc">Deep purple goodness — naturally sweet with a refreshing finish</div><div class="price">Rp 10,000</div></div>
+      <div class="menu-card" data-cat="juice"><span class="icon">🍋</span><div class="name">Lemon Squash</div><div class="desc">Zingy fresh lemon with a hint of honey — great for immunity</div><div class="price">Rp 9,000</div></div>
+      <div class="menu-card" data-cat="blend"><div class="badge-best">Best Seller</div><span class="icon">🧃</span><div class="name">Mixed Fruit Blend</div><div class="desc">Our signature multi-fruit mix — balanced, nutritious and delicious</div><div class="price">Rp 10,000</div></div>
+      <div class="menu-card" data-cat="blend"><span class="icon">🥝</span><div class="name">Green Detox Juice</div><div class="desc">Cucumber, kiwi, spinach &amp; lemon — a full body refresh</div><div class="price">Rp 12,000</div></div>
+      <div class="menu-card" data-cat="blend"><div class="badge-new">New</div><span class="icon">🌅</span><div class="name">Tropical Sunrise</div><div class="desc">Mango, passion fruit &amp; orange layered in a stunning blend</div><div class="price">Rp 13,000</div></div>
+      <div class="menu-card" data-cat="blend"><span class="icon">🍓</span><div class="name">Berry Blast</div><div class="desc">Strawberry, grape &amp; soursop — tangy, sweet and refreshing</div><div class="price">Rp 13,000</div></div>
+      <div class="menu-card" data-cat="bowl"><div class="badge-best">Best Seller</div><span class="icon">🍧</span><div class="name">Es Buah</div><div class="desc">Chilled fresh fruit bowl with palm sugar jelly, grass jelly &amp; coconut milk</div><div class="price">Rp 10,000</div></div>
+      <div class="menu-card" data-cat="bowl"><span class="icon">🥥</span><div class="name">Coconut Ice Bowl</div><div class="desc">Fresh young coconut, lychee &amp; nata de coco in coconut water</div><div class="price">Rp 12,000</div></div>
+      <div class="menu-card" data-cat="bowl"><div class="badge-new">New</div><span class="icon">🍑</span><div class="name">Fruit Pudding Bowl</div><div class="desc">Mixed fruits with homemade agar jelly and rose syrup</div><div class="price">Rp 12,000</div></div>
     </div>
   </div>
 </div>
 
-<!-- SIGNATURE MENU -->
-<section>
-  <p class="section-label">Signature Menu</p>
-  <h2 class="section-title">Our Customers' <br/>All-Time Favourites</h2>
-
-  <div class="menu-grid">
-    <div class="menu-card">
-      <div class="icon">🥭</div>
-      <div class="name">Mango Juice</div>
-      <div class="price">Rp 8,000</div>
-      <div class="desc">Sweet & refreshing from handpicked aromatic mangoes</div>
-    </div>
-    <div class="menu-card">
-      <div class="icon">🍉</div>
-      <div class="name">Watermelon Juice</div>
-      <div class="price">Rp 7,000</div>
-      <div class="desc">Cool and hydrating — perfect for a hot day</div>
-    </div>
-    <div class="menu-card">
-      <div class="icon">🍊</div>
-      <div class="name">Orange Juice</div>
-      <div class="price">Rp 8,000</div>
-      <div class="desc">Natural vitamin C to boost your immune system</div>
-    </div>
-    <div class="menu-card">
-      <div class="icon">🥑</div>
-      <div class="name">Avocado Juice</div>
-      <div class="price">Rp 10,000</div>
-      <div class="desc">Thick, creamy, and rich in healthy fats</div>
-    </div>
-    <div class="menu-card">
-      <div class="icon">🍍</div>
-      <div class="name">Pineapple Juice</div>
-      <div class="price">Rp 7,000</div>
-      <div class="desc">Tangy freshness packed with bromelain enzymes</div>
-    </div>
-    <div class="menu-card">
-      <div class="icon">🍓</div>
-      <div class="name">Strawberry Juice</div>
-      <div class="price">Rp 12,000</div>
-      <div class="desc">High in antioxidants with a premium taste</div>
-    </div>
-    <div class="menu-card">
-      <div class="icon">🧃</div>
-      <div class="name">Mixed Fruit Juice</div>
-      <div class="price">Rp 10,000</div>
-      <div class="desc">Our signature fruit blend, packed with nutrients</div>
-    </div>
-    <div class="menu-card">
-      <div class="icon">🍧</div>
-      <div class="name">Fruit Ice Bowl</div>
-      <div class="price">Rp 10,000</div>
-      <div class="desc">Fresh fruit bowl with palm sugar jelly & grass jelly</div>
+<!-- PROMOS -->
+<div style="background: var(--cream2); padding: 80px 24px;">
+  <div style="max-width:960px; margin:0 auto;">
+    <p class="section-label">Special Offers</p>
+    <h2 class="section-title">Deals &amp; Promotions</h2>
+    <div class="promo-grid">
+      <div class="promo-card green"><span class="promo-icon">🎁</span><h3>Buy 3, Get 1 Free</h3><p>Order any 3 juices and get the 4th one on us! Great for sharing with family and friends.</p></div>
+      <div class="promo-card orange"><span class="promo-icon">🚚</span><h3>Free Delivery</h3><p>Free delivery for orders above Rp 50,000 within the Karawang area. Order via WhatsApp!</p></div>
+      <div class="promo-card yellow"><span class="promo-icon">🌅</span><h3>Morning Freshness</h3><p>10% off all orders placed before 10:00 AM. Start your day right with Salo Jus!</p></div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- WHY US -->
-<section style="background: white; border-radius: 28px; box-shadow: 0 4px 32px rgba(59,31,14,.07); max-width: 900px;">
-  <p class="section-label">Why Salo Jus?</p>
-  <h2 class="section-title">Our Strengths</h2>
-
-  <div class="keunggulan-grid">
-    <div class="keunggulan-item">
-      <div class="keunggulan-icon">🌿</div>
-      <div>
-        <h3>100% Natural Ingredients</h3>
-        <p>No artificial colours or preservatives — only fresh real fruit every single day.</p>
-      </div>
-    </div>
-    <div class="keunggulan-item">
-      <div class="keunggulan-icon">⚡</div>
-      <div>
-        <h3>Fresh to Order</h3>
-        <p>Every order is made right on the spot — no pre-made or stored batches.</p>
-      </div>
-    </div>
-    <div class="keunggulan-item">
-      <div class="keunggulan-icon">💰</div>
-      <div>
-        <h3>Affordable Prices</h3>
-        <p>Premium quality at wallet-friendly prices for everyone.</p>
-      </div>
-    </div>
-    <div class="keunggulan-item">
-      <div class="keunggulan-icon">🏠</div>
-      <div>
-        <h3>Home Delivery Available</h3>
-        <p>We offer delivery service within the surrounding area of our location.</p>
-      </div>
-    </div>
-    <div class="keunggulan-item">
-      <div class="keunggulan-icon">🧼</div>
-      <div>
-        <h3>Hygienic & Clean</h3>
-        <p>Our preparation process is maintained to the highest health standards.</p>
-      </div>
-    </div>
-    <div class="keunggulan-item">
-      <div class="keunggulan-icon">😊</div>
-      <div>
-        <h3>Friendly Service</h3>
-        <p>We serve with a warm smile and genuine care every time.</p>
-      </div>
+<div id="strengths" class="strengths-bg">
+  <div class="strengths-inner">
+    <p class="section-label">Why Choose Us?</p>
+    <h2 class="section-title">The Salo Jus Difference</h2>
+    <div class="strengths-grid">
+      <div class="strength-card"><div class="strength-icon">🌿</div><h3>100% Natural Ingredients</h3><p>We use only real fresh fruit — no artificial colouring, no preservatives, and no synthetic sweeteners in any of our drinks.</p></div>
+      <div class="strength-card"><div class="strength-icon">⚡</div><h3>Always Fresh to Order</h3><p>Every drink is prepared right when you order it. No pre-mixed batches — just pure, instant freshness in every glass.</p></div>
+      <div class="strength-card"><div class="strength-icon">💰</div><h3>Affordable for Everyone</h3><p>Premium quality doesn't have to cost a fortune. We keep our prices wallet-friendly so everyone can enjoy a healthy drink daily.</p></div>
+      <div class="strength-card"><div class="strength-icon">🏠</div><h3>Home Delivery Available</h3><p>Can't come to us? We'll come to you! Delivery service within the surrounding Karawang area via WhatsApp order.</p></div>
+      <div class="strength-card"><div class="strength-icon">🧼</div><h3>Hygienic &amp; Food Safe</h3><p>Our preparation area is kept clean and hygienic at all times, following strict food safety standards in every step.</p></div>
+      <div class="strength-card"><div class="strength-icon">😊</div><h3>Warm &amp; Friendly Service</h3><p>We treat every customer like family — always ready to serve with a genuine smile and helpful attitude.</p></div>
+      <div class="strength-card"><div class="strength-icon">🎨</div><h3>Customisable Orders</h3><p>Want less sugar? Extra ice? A special blend? Just ask — we're happy to tailor your drink exactly the way you like it.</p></div>
+      <div class="strength-card"><div class="strength-icon">📦</div><h3>Bulk &amp; Event Orders</h3><p>Planning a gathering, office event, or party? We accept bulk orders at special prices. Contact us in advance to arrange.</p></div>
+      <div class="strength-card"><div class="strength-icon">🤝</div><h3>Trusted Local Business</h3><p>Rooted in Karawang since 2018, we are a local business built on trust, quality, and consistent customer satisfaction.</p></div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- PROCESS -->
+<div>
+  <div class="section">
+    <p class="section-label">How We Make It</p>
+    <h2 class="section-title">From Fruit to Your Glass</h2>
+    <p class="section-body">Every drink goes through a careful process to ensure you get the freshest, most delicious result every time.</p>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-circle"><span class="step-num">1</span>🛒</div><h4>Fresh Sourcing</h4><p>We source fresh fruits daily from trusted local markets in Karawang.</p></div>
+      <div class="process-step"><div class="step-circle"><span class="step-num">2</span>🧹</div><h4>Careful Cleaning</h4><p>All fruits are washed and prepared under strict hygienic conditions.</p></div>
+      <div class="process-step"><div class="step-circle"><span class="step-num">3</span>🔪</div><h4>Hand-Prepared</h4><p>Fruits are freshly cut and portioned to order — no pre-cut storage.</p></div>
+      <div class="process-step"><div class="step-circle"><span class="step-num">4</span>🌀</div><h4>Blended Fresh</h4><p>We blend or press each drink immediately after your order is placed.</p></div>
+      <div class="process-step"><div class="step-circle"><span class="step-num">5</span>🥤</div><h4>Served Instantly</h4><p>Your drink is served chilled and fresh — ready to enjoy in minutes.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div style="background: var(--cream2); padding: 80px 24px;">
+  <div style="max-width:960px; margin:0 auto;">
+    <p class="section-label">Gallery</p>
+    <h2 class="section-title">A Glimpse of Freshness</h2>
+    <div class="gallery-mosaic">
+      <div class="gallery-cell gc-1">🥤</div>
+      <div class="gallery-cell gc-2">🥭</div>
+      <div class="gallery-cell gc-3">🍊</div>
+      <div class="gallery-cell gc-4">🍓</div>
+      <div class="gallery-cell gc-5">🥑</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-bg">
+  <div class="testi-inner">
+    <p class="section-label">Testimonials</p>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"The mango juice here is incredible — so thick and naturally sweet. I order it almost every day before work!"</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Rizky Amalia</div><div class="testi-loc">Karawang Barat</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Ordered 50 cups for our office event — the delivery was on time, everything was fresh, and everyone loved it!"</p><div class="testi-author"><div class="testi-avatar">👨</div><div><div class="testi-name">Budi Santoso</div><div class="testi-loc">Karawang Timur</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Best avocado juice in Karawang, no doubt. Super creamy and not too sweet. Prices are very reasonable too!"</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Siti Nurhaliza</div><div class="testi-loc">Cikampek</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div>
+  <div class="section">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you use any artificial ingredients?<span class="arrow">▾</span></button><div class="faq-a">No, absolutely not. All our drinks are made using 100% fresh fruit with no artificial colouring, flavouring, or preservatives.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I customise my drink (less sugar, extra ice, etc.)?<span class="arrow">▾</span></button><div class="faq-a">Absolutely! We're happy to customise any drink to your preference. Just let us know when you order via WhatsApp or at our stall.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you accept bulk or event orders?<span class="arrow">▾</span></button><div class="faq-a">Yes! We accept bulk orders for events, offices, and parties. Please contact us at least 1–2 days in advance so we can prepare everything perfectly.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is delivery available? What is the delivery area?<span class="arrow">▾</span></button><div class="faq-a">We offer delivery within the Karawang area. Free delivery is available for orders above Rp 50,000. Contact us via WhatsApp to arrange.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What are your operating hours?<span class="arrow">▾</span></button><div class="faq-a">We are open every day from 08:00 to 21:00 WIB. You can also pre-order via WhatsApp for the next day.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?<span class="arrow">▾</span></button><div class="faq-a">We accept cash, bank transfer, and QRIS (GoPay, OVO, Dana, ShopeePay, etc.). Payment via WhatsApp transfer is also available for delivery orders.</div></div>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT -->
-<section>
-  <p class="section-label">Get in Touch</p>
-  <h2 class="section-title">Information & Contact</h2>
-
-  <div class="kontak-box">
-    <div class="kontak-item">
-      <div class="label">Business Name</div>
-      <div class="val">Salo Jus</div>
-    </div>
-    <div class="kontak-item">
-      <div class="label">Business Type</div>
-      <div class="val">Fresh Beverages / Small Business</div>
-    </div>
-    <div class="kontak-item">
-      <div class="label">Location</div>
-      <div class="val">Karawang, West Java</div>
-    </div>
-    <div class="kontak-item">
-      <div class="label">Operating Hours</div>
-      <div class="val">Every Day<br/>08:00 – 21:00 WIB</div>
-    </div>
-    <div class="kontak-item">
-      <div class="label">WhatsApp</div>
-      <div class="val"><a href="https://wa.me/6282323240186">0823-2324-0186</a></div>
-    </div>
-    <div class="kontak-item">
-      <div class="label">Social Media</div>
-      <div class="val"><a href="#">@salojus</a></div>
+<div id="contact" style="background: var(--cream2); padding: 80px 24px;">
+  <div style="max-width:960px; margin:0 auto;">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Contact &amp; Location</h2>
+    <div class="contact-layout">
+      <div class="contact-info-box">
+        <h3>Salo Jus</h3>
+        <div class="contact-row"><div class="contact-row-icon">🏪</div><div><div class="contact-row-label">Business Name</div><div class="contact-row-val">Salo Jus</div></div></div>
+        <div class="contact-row"><div class="contact-row-icon">🧃</div><div><div class="contact-row-label">Business Type</div><div class="contact-row-val">Fresh Beverages / Small Business (UMKM)</div></div></div>
+        <div class="contact-row"><div class="contact-row-icon">📍</div><div><div class="contact-row-label">Location</div><div class="contact-row-val">Karawang, West Java, Indonesia</div></div></div>
+        <div class="contact-row"><div class="contact-row-icon">🕗</div><div><div class="contact-row-label">Operating Hours</div><div class="contact-row-val">Every Day · 08:00 – 21:00 WIB</div></div></div>
+        <div class="contact-row"><div class="contact-row-icon">📱</div><div><div class="contact-row-label">WhatsApp</div><div class="contact-row-val"><a href="https://wa.me/6282323240186">0823-2324-0186</a></div></div></div>
+        <div class="contact-row"><div class="contact-row-icon">📸</div><div><div class="contact-row-label">Social Media</div><div class="contact-row-val"><a href="#">@salojus</a></div></div></div>
+        <div class="contact-row"><div class="contact-row-icon">💳</div><div><div class="contact-row-label">Payment</div><div class="contact-row-val">Cash · Transfer · QRIS</div></div></div>
+      </div>
+      <div class="contact-map-box">
+        <div class="map-placeholder"><span class="map-icon">🗺️</span><p>Karawang, West Java</p></div>
+        <div class="map-cta">
+          <a href="https://wa.me/6282323240186" class="wa">💬 Chat on WhatsApp</a>
+          <a href="https://maps.google.com/?q=Karawang,West+Java" target="_blank">📍 Open in Google Maps</a>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
-<footer>
-  <p>© 2025 <strong>Salo Jus</strong> — Local Fresh Beverage Small Business 🥤</p>
-  <p style="margin-top:6px; opacity:.6;">Made with ❤️ to support local Indonesian products</p>
-</footer>
+<div class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-logo"><div class="logo-box">🥤</div><span class="logo-name">Salo Jus</span></div>
+      <p>A local small business in Karawang, West Java, dedicated to serving fresh, natural, and affordable fruit beverages since 2018. Made with love, served with care.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Our Menu</a></li>
+        <li><a href="#strengths">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Menu Highlights</h4>
+      <ul>
+        <li><a href="#">Mango Juice</a></li>
+        <li><a href="#">Avocado Juice</a></li>
+        <li><a href="#">Mixed Blend</a></li>
+        <li><a href="#">Es Buah</a></li>
+        <li><a href="#">Green Detox</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Salo Jus · Karawang, West Java · All Rights Reserved</p>
+    <p>Made with ❤️ to support local Indonesian small businesses</p>
+  </div>
+</div>
+<div class="bottom-strip"></div>
 
-<div class="orange-strip"></div>
+<a class="wa-float" href="https://wa.me/6282323240186" title="Chat on WhatsApp">💬</a>
 
+<script>
+  function filterMenu(cat, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.menu-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.menu-card, .strength-card, .testi-card, .promo-card, .process-step').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
